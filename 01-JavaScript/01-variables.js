@@ -130,3 +130,19 @@ console.log(datos.gastos); // Este formato tambien es valido
 
 // Una clase muy util en JS "Object.keys()"
 console.log(Object.keys(datos));
+
+// Esta parte es dificil, tener cuidado
+// Variables por referencia y por valor
+
+    /*
+    Lista de variables por valor en JS
+        number
+        string
+        boolean
+        undefined
+    */
+    /*
+    Lista de variables por referencia en JS
+        Object
+    */
+    // Acordarse de Object.assign() para copiar un objeto en vez de solo referenciarlo
