@@ -94,7 +94,7 @@ if (undefined){
 // OBJETOS JSON - ARREGLOS
 
 const datos = {
-    nombre: "Carlos", // llave: valor
+    nombre: "Carlos", // llave: valor,
     apellido: "Rodas",
     cel: "0954888756",
     edad: "28",
@@ -105,8 +105,44 @@ const datos = {
     mascotas: ['cachetes', 'pecas', 'firulais'] // también se puede poner arreglos dentro de  objetos
 } // object
 
-const arregloNumeros = []; //object
+const arregloNumeros = []; // empty object
 
+//Acceder a las propiedades del objeto
 console.log(datos.nombre + " - " + datos.apellido);
 console.log(datos);
 console.log(arregloNumeros);
+
+// Otro tipo de sintaxis
+datos.nombre;
+datos["nombre"]; // Ambas son validas
+datos.nombre = "Andres";
+console.log(datos["nombre"]);
+datos["nombre"]= "Carlos";
+console.log(datos.nombre);
+
+// crear nueva propiedad
+datos.sueldo;
+console.log(datos.sueldo); // Esto saldría undefined porque aun no hacemos nada con "sueldo"
+datos.sueldo = 1.2;
+console.log(datos.sueldo); // Ahora si va a devolver algo
+datos["gastos"] = 0.8;
+console.log(datos.gastos); // Este formato tambien es valido
+
+// Una clase muy util en JS "Object.keys()"
+console.log(Object.keys(datos));
+
+// Esta parte es dificil, tener cuidado
+// Variables por referencia y por valor
+
+    /*
+    Lista de variables por valor en JS
+        number
+        string
+        boolean
+        undefined
+    */
+    /*
+    Lista de variables por referencia en JS
+        Object
+    */
+    // Acordarse de Object.assign() para copiar un objeto en vez de solo referenciarlo
