@@ -13,3 +13,16 @@ const arregloTodo = [
     true, 1, 1.2, "Adrian", undefined, null, {},[1, 2, true, "A"]
 ]
 console.log(arregloTodo); // un arreglo JS no tiene un "tipo" definido, un arreglo puede guardar lo que sea dentro
+
+// FOR en JS
+    // for of
+
+for (let numero of arreglo){ // Valores
+    console.log('numero', numero)
+}
+
+    // for in
+
+for (let numero in arreglo){ // Indices
+    console.log('numero', numero)
+}
