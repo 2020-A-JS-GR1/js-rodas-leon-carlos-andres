@@ -75,3 +75,41 @@ const respuestaIndex = arreglo
         }
     );
 console.log('respuestaIndex', respuestaIndex);
+
+    // forEach
+const respuestaForEach = arreglo
+    .forEach(
+        function(valorActual, indiceActual, arregloCompleto) {
+            console.log('valorActual', valorActual);
+            console.log('indiceActual', indiceActual);
+            console.log('arregloCompleto', arregloCompleto);
+        }
+    );
+console.log('repuestaForEach', respuestaForEach); // siempre es undefined, solo sirve para iterar
+
+    // MAP - devolver un nuevo elemento
+const respuestaMap = arreglo
+    .map(
+        function(valorActual, indiceActual, arregloCompleto) {
+            valorActual.nota = valorActual.nota + 1;
+            return valorActual;
+        }
+    );
+console.log('respuestaMap', respuestaMap);
+
+const respuestaMapNuevo = arreglo
+    .map(
+        (valorActual, indiceActual, arregloCompleto) => {
+            return valorActual.nota;
+        }
+    );
+console.log('respuestaMapNuevo', respuestaMapNuevo);
+
+    // Filter - tiene truth o false
+const respuestaFilter = arreglo
+    .map(
+        function(valorActual, indiceActual, arregloCompleto) {
+            return valorActual.nota >= 7;
+        }
+    );
+console.log('respuestaFilter', respuestaFilter);
