@@ -34,3 +34,9 @@ const funcionNombradaSeis = (x) => {
 const funcionNombradaSiete = (x) => x + 1 ; // Omito llaves y return al hacerlo en una sola línea
 const funcionNombradaOcho = x => x + 1 ; // Tengo un solo parámetro, puedo omitar también los paréntesis
 const funcionNombradaNueve = (x,y,z) => x + y + z ;
+
+// Parámetros infinitos
+function sumarNumeros(numeroInicial, ...otrosNumeros) {
+    return numeroInicial + otrosNumeros.reduce((a,v)=> a + v,0);
+}
+sumarNumeros(1,2,3,4,5,6,7,8,9,10);
