@@ -2,52 +2,52 @@ const arreglo = [
     {
         id: 1,
         nombre: "Adrian",
-        nota: 5
+        nota: 4
     },
     {
         id: 2,
         nombre: "Pepe",
-        nota: 9
+        nota: 18
     },
     {
         id: 3,
         nombre: "Juan",
-        nota: 8
+        nota: 16
     },
     {
         id: 4,
         nombre: "Daniel",
-        nota: 2
+        nota: 3
     },
     {
         id: 5,
         nombre: "Lily",
-        nota: 7
+        nota: 14
     },
     {
         id: 6,
         nombre: "Jose",
-        nota: 1
+        nota: 7
     },
     {
         id: 7,
         nombre: "Pamela",
-        nota: 10
+        nota: 20
     },
     {
         id: 8,
         nombre: "Luis",
-        nota: 8
+        nota: 15
     },
     {
         id: 9,
         nombre: "Jude",
-        nota: 7
+        nota: 12
     },
     {
         id: 10,
         nombre: "Cristian",
-        nota: 6
+        nota: 16
     }
 ];
 
@@ -113,3 +113,23 @@ const respuestaFilter = arreglo
         }
     );
 console.log('respuestaFilter', respuestaFilter);
+
+// Hay ALGUNA nota menor a nueve? Sí o No
+    //OR - SOLO UNO TIENE QUE CUMPLIR
+const respuestaSome = arreglo
+    .some (
+        (valorActual, indiceActual, arregloCompleto) => {
+            return valorActual.nota < 9;
+        }
+    );
+console.log('respuestaSome', respuestaSome);
+
+// Todas las notas son mayores a 14? Sí o No
+    //AND - TODOS TIENEN QUE CUMPLIR
+const respuestaAny = arreglo
+    .every (
+        (valorActual, indiceActual, arregloCompleto) => {
+            return valorActual.nota > 14;
+        }
+    );
+console.log('respuestaAny', respuestaAny);
