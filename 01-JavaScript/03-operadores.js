@@ -133,3 +133,24 @@ const respuestaAny = arreglo
         }
     );
 console.log('respuestaAny', respuestaAny);
+
+
+// reduce izq -> der
+// reduceRight der -> izq
+const respuestaReduce = arreglo
+    .reduce(
+        (valorAcumulado, valorActual, indice, arreglo) => {
+            return valorAcumulado + valorActual.nota;
+        },
+        0 // Acumulador
+    );
+console.log('respuestaReduce', respuestaReduce);
+
+// Ejemplo para demostrar por que usar operadores en vez de for
+const arregloEstudiantesMenoresANueve = arreglo
+    .map((v)=> v.nota * 1.3) // anadiendo 30%
+    .filter((nota)=>nota<9) // Busco a los < 9
+const totalPuntosEstudiantes = arregloEstudiantesMenoresANueve
+    .reduce((acumulado,actual)=>acumulado+actual, 0); // Total
+const notaPromedio = totalPuntosEstudiantes / arregloEstudiantesMenoresANueve.length;
+console.log('notaPromedio', notaPromedio);
