@@ -16,7 +16,6 @@ function escribirArchivo(path, contenidoNuevo){
             // fs.writeFile(path, contenido, codificacion callback);
             fs.writeFile(path, contenido + contenidoNuevo, (err) => {
                 if (err) throw err;
-                //console.log('The file has been saved!');
             });
             if(error){
                 console.error('Hubo error', error);
@@ -25,7 +24,6 @@ function escribirArchivo(path, contenidoNuevo){
             }
         }
     );
-    
 }
 
 // escribirArchivo('..', 'Buenas Tardes');
