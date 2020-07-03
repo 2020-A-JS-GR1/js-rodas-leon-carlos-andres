@@ -8,6 +8,8 @@ el texto al final del archivo.
 - Al final vamos a leer el archivo nuevamente e imprimirlo en consola.
 */
 
+// HECHO POR MI
+/*
 function getData(fileName, type) {
     return new Promise(function(resolve, reject){
         fs.readFile(fileName, type, (err, data) => {
@@ -45,3 +47,6 @@ function writeData(fileName, type, newData) {
 
 getData('06-ejemplo.txt', 'utf-8');
 writeData('06-ejemplo.txt', 'utf-8', 'extra');
+ */
+
+// HECHO POR EL INGE
