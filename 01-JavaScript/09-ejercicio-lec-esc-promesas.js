@@ -50,3 +50,72 @@ writeData('06-ejemplo.txt', 'utf-8', 'extra');
  */
 
 // HECHO POR EL INGE
+function promesaLeerArchivo(path) {
+    const leerArchivo = new Promise(
+        (resolve, reject) => {
+            fs.readFile(
+                path,
+                'utf-8',
+                (error, contenidoArchivoLeido) => {
+                    if (error) {
+                        console.error('Error leyendo archivo', error);
+                        reject(error);
+                    } else {
+                        resolve(contenidoArchivoLeido);
+                    }
+                }
+            );
+        }
+    );
+    return leerArchivo
+} // PROMESA!!!
+
+function promesaEscribirArchivo(path, contenidoActual, nuevoContenido) {
+    const escribirArchivo = new Promise(
+        (resolve, reject) => {
+            fs.writeFile(
+                path,
+                contenidoActual + '\n' + nuevoContenido,
+                'utf-8',
+                (error) => {
+                    if (error) {
+                        console.error('Error leyendo archivo', error);
+                        reject(error);
+                    } else {
+                        resolve();
+                    }
+                }
+            );
+        }
+    );
+    return escribirArchivo;
+} // PROMESA!!!
+
+function ejercicio(path, nuevoContenido) {
+
+    promesaLeerArchivo(path)
+        .then( // archivo leido
+            (contenidoArchivoActual) => {
+                return promesaEscribirArchivo(
+                    path,
+                    contenidoArchivoActual,
+                    nuevoContenido
+                );
+            }
+        )
+        .then(
+            () => promesaLeerArchivo(path)
+        )
+        .then(
+            (nuevoContenido) => {
+                console.log('Nuevo Contenido', nuevoContenido);
+            }
+        )
+        .catch(
+            (error) => {
+                consol.error(error)
+            }
+        );
+}
+
+ejercicio('./06-ejemplo.txt', 'Buenas mañanas');
