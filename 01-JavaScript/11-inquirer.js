@@ -2,19 +2,24 @@ const inquirer = require('inquirer');
 
 // npm install inquirer
 async function main() {
-    const respuesta = inquirer
-        .prompt([
-            {
-                type: 'input',
-                name: 'apellido',
-                message: 'Ingresa tu nombre'
-            },
-            {
-                type: 'input',
-                name: 'edad',
-                message: 'Ingresa tu edad'
-            },
-        ])
+    try{
+        const respuesta = await inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'apellido',
+                    message: 'Ingresa tu nombre'
+                },
+                {
+                    type: 'input',
+                    name: 'edad',
+                    message: 'Ingresa tu edad'
+                },
+            ]);
+    } catch (e) {
+        console.log(e);
+    }
+
 }
 
 main();
