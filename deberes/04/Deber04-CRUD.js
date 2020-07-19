@@ -7,7 +7,7 @@ let validator = true;
 const promiseOptions = () => {
     return inquirer
         .prompt({
-            type: 'list',    // rawlist?
+            type: 'list',
             name: 'option',
             message: 'What would you like to do?',
             choices: ['Add a game', 'Update a game', 'Delete a game', 'List all the games', 'Exit']
@@ -28,17 +28,35 @@ const promiseCreateGame = (game) => {
                 name: 'category',
                 message: 'Choose a category for the game:',
                 choices: ['Action', 'Adventure', 'FPS', 'MOBA', 'Role-Playing', 'Simulation', 'Strategy', 'Sports', 'Other']
+            },
+            {
+                type: 'list',
+                name: 'completed',
+                message: 'Have you completed this game?',
+                choices: ['Yes', 'No']
+            },
+            {
+                type: 'list',
+                name: 'recommended',
+                message: 'Do you recommend this game?',
+                choices: ['Yes', 'No']
+            },
+            {
+                type: 'input',
+                name: 'hoursPlayed',
+                message: 'How many hours have you played this game?',
+                defualt: '0'
             }
         ]);
 }
 
-const promiseSelectGame = (game) => {
+const promiseSelectGame = (games) => {
     return inquirer
         .prompt({
             type: 'list',
             name: 'game',
             message: 'Select a game:',
-            choices: game,
+            choices: games,
         });
 }
 
@@ -88,7 +106,6 @@ function updateFile(list) {
             } else {
                 updatedList = updatedList + JSON.stringify(val);
             }
-
         }
     );
     return updatedList;
@@ -103,7 +120,6 @@ const promiseListAllGames = (list) => {
             } else {
                 allGames = allGames + JSON.stringify(val);
             }
-
         }
     );
     return allGames;
@@ -152,7 +168,7 @@ async function gameCRUD() {
                         )] = await promiseCreateGame(resUpdateGame.game);
                         await promiseWriteToFile(updateFile(gameList));
                     }
-                    console.log('------Datos del arma actualizados con exito------');
+                    console.log('Game updated');
                     break;
 
                 case 'Delete a game':
@@ -185,8 +201,8 @@ async function gameCRUD() {
                     break;
             }
         }
-    } catch (error) {
-        console.error('Se produjo un error:\n', error);
+    } catch (e) {
+        console.error('Error: ', e);
     }
 }
 
