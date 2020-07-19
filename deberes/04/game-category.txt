@@ -1,0 +1,4 @@
+{"game":"Mario","category":"Other","completed":"Yes","recommended":"Yes","hoursPlayed":"80"}
+{"game":"Zelda","category":"Adventure","completed":"No","recommended":"Yes","hoursPlayed":"200"}
+{"game":"Fallout 4","category":"Role-Playing","completed":"No","recommended":"No","hoursPlayed":"280"}
+{"game":"Halo 3","category":"FPS","completed":"Yes","recommended":"Yes","hoursPlayed":"115"}
