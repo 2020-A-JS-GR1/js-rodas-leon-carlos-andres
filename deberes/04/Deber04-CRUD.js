@@ -9,7 +9,7 @@ const promiseOptions = () => {
         .prompt({
             type: 'list',    // rawlist?
             name: 'option',
-            message: 'Welcome. What would you like to do?',
+            message: 'What would you like to do?',
             choices: ['Add a game', 'Update a game', 'Delete a game', 'List all the games', 'Exit']
         });
 }
@@ -32,21 +32,21 @@ const promiseCreateGame = (game) => {
         ]);
 }
 
-const promiseSelectGame = (games) => {
+const promiseSelectGame = (game) => {
     return inquirer
         .prompt({
             type: 'list',
-            name: 'selectGame',
+            name: 'game',
             message: 'Select a game:',
-            choices: games,
+            choices: game,
         });
 }
 
-const promiseReadGame = () => {
+const promiseReadGames = () => {
     return new Promise(
         (res, rej) => {
             fs.readFile(
-                path,
+                file,
                 'utf-8',
                 (e, content) => {
                     if (e) {
@@ -82,11 +82,11 @@ const promiseWriteToFile = (data) => {
 function updateFile(list) {
     let updatedList = '';
     list.map(
-        (valorActual, indiceActual) => {
-            if (indiceActual < list.length - 1) {
-                updatedList = updatedList + JSON.stringify(valorActual) + '\n';
+        (val, ind) => {
+            if (ind < list.length - 1) {
+                updatedList = updatedList + JSON.stringify(val) + '\n';
             } else {
-                updatedList = updatedList + JSON.stringify(valorActual);
+                updatedList = updatedList + JSON.stringify(val);
             }
 
         }
@@ -95,6 +95,99 @@ function updateFile(list) {
 }
 
 const promiseListAllGames = (list) => {
-    return list.all()
+    let allGames = '';
+    list.map(
+        (val, ind) => {
+            if (ind < list.length - 1) {
+                allGames = allGames + JSON.stringify(val) + '\n';
+            } else {
+                allGames = allGames + JSON.stringify(val);
+            }
+
+        }
+    );
+    return allGames;
 }
 
+// Función principal
+async function gameCRUD() {
+    try {
+        while (validator) {
+            const resReadGames = await promiseReadGames();
+            let gameList = [];
+            
+            if (resReadGames !== '') {
+                gameList = resReadGames.split('\n').map(
+                    val => {
+                        return JSON.parse(val);
+                    }
+                );
+            }
+            const resOption = await promiseOptions();
+            switch (resOption.option) {
+
+                case 'Add a game':
+                    const resAddGame = await promiseCreateGame();
+                    if (resReadGames !== '') {
+                        await promiseWriteToFile(resReadGames + '\n' + JSON.stringify(resAddGame));
+                    } else {
+                        await promiseWriteToFile(JSON.stringify(resAddGame));
+                    }
+                    console.log('Game registered succesfully');
+                    break;
+
+                case 'Update a game':
+                    if (gameList.length === 0) {
+                        console.log('No registered games yet');
+                    } else {
+                        const resUpdateGame = await promiseSelectGame(gameList.map(
+                            val => {
+                                return val.game;
+                            }
+                        ));
+                        gameList[gameList.findIndex(
+                            val => {
+                                return val.game === resUpdateGame.game;
+                            }
+                        )] = await promiseCreateGame(resUpdateGame.game);
+                        await promiseWriteToFile(updateFile(gameList));
+                    }
+                    console.log('------Datos del arma actualizados con exito------');
+                    break;
+
+                case 'Delete a game':
+                    if (gameList.length === 0) {
+                        console.log('No registered games');
+                    } else {
+                        const resDelete = await promiseSelectGame(gameList.map(
+                            val => {
+                                return val.game;
+                            }
+                        ));
+                        gameList.splice(gameList.findIndex(
+                            val => {
+                                return val.game === resDelete.game;
+                            }
+                        ), 1);
+                        await promiseWriteToFile(updateFile(gameList));
+                    }
+                    console.log('Game Deleted');
+                    break;
+
+                case 'List all the games':
+                    const resListAllGames = await promiseListAllGames(gameList);
+                    console.table(resListAllGames);
+                    break;
+
+                case 'Exit':
+                    validator = false;
+                    console.log('Bye!');
+                    break;
+            }
+        }
+    } catch (error) {
+        console.error('Se produjo un error:\n', error);
+    }
+}
+
+gameCRUD();
