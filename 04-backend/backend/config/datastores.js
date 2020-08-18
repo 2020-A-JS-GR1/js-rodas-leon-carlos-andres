@@ -38,5 +38,5 @@ module.exports.datastores = {
     url: 'mysql://carlos:1234@localhost:32771/js',
 
   },
-  
+
 };
