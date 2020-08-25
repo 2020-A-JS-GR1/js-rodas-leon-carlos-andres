@@ -14,8 +14,13 @@ module.exports = {
         type: 'string',
         required: true,
       }
+    },
+    // Relaciones
+    // Batalla <- Pokemon
+    pokemon: {
+      model: 'Pokemon',
+      required: true,
     }
-
   },
 
 };

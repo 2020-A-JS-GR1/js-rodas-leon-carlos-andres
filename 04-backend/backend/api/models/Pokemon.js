@@ -20,8 +20,12 @@ module.exports = {
         model: 'Usuario', // Modelo con el cual relacionamos
         required: true, // Requerida 1 -N ---- //false // Opcional 0 - N (por defecto)
       }
+    },
+    // Pokemon -> Batalla
+    batallas: {
+      collection: 'Batalla',
+      via: 'pokemon'
     }
-
   },
 
 };
