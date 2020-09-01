@@ -1,1 +1,13 @@
-<p>carta-pelicula works!</p>
+<!-- Property Binding -->
+
+<img [src]="urlEjemploImagen" alt="" style="max-width:200px;">
+
+<!-- Interpolación -->
+
+<a [href]="linkTextoEjemplo">
+  <p>{{textoEjemplo}}</p>
+</a>
+
+<!-- Event Binding -->
+
+<button (click)="ejemploFuncion()" (blur)="ejemploBlur()">{{textoEjemplo}}</button>
