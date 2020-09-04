@@ -1,4 +1,34 @@
 
 <h1>Lista de películas</h1>
 
-<app-carta-pelicula></app-carta-pelicula>
+<!--<p *ngFor="let numero of arregloNumeros">-->
+<!--  {{numero}}-->
+<!--</p>-->
+
+<!--<p *ngIf="false">-->
+<!--  OCULTO-->
+<!--</p>-->
+
+<div *ngFor="let pelicula of arregloPeliculas">
+  <app-carta-pelicula
+    [urlImagen]="pelicula.url"
+    [descripcion]="pelicula.desc"
+    [nombreBoton]="pelicula.nombrePeli"
+    (eventoDioClicEnBoton)="mensajeConsola($event)"
+    (eventoDioClicEnImagen)="mensajeConsola($event)"
+  >
+  </app-carta-pelicula>
+
+  <br>
+  <br>
+
+</div>
+
+
+
+<!--<app-carta-pelicula-->
+<!--  urlImagen="https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_3adaf4f8.jpeg?region=0,0,540,810"-->
+<!--  descripcion="Avengers: Endgame"-->
+<!--  nombreBoton="Like 2"-->
+<!--&gt;-->
+<!--</app-carta-pelicula>-->

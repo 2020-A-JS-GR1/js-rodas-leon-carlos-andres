@@ -1,13 +1,15 @@
 <!-- Property Binding -->
 
-<img [src]="urlEjemploImagen" alt="" style="max-width:200px;">
+<img [src]="urlImagen" alt="" style="max-width:200px;" (click)="ejecutarEventoDIoClicImagen()">
 
 <!-- Interpolación -->
 
 <a [href]="linkTextoEjemplo">
-  <p>{{textoEjemplo}}</p>
+  <p>{{descripcion}}</p>
 </a>
 
 <!-- Event Binding -->
 
-<button (click)="ejemploFuncion()" (blur)="ejemploBlur()">{{textoEjemplo}}</button>
+<button (click)="ejecutarEventoDioClic()">
+  {{nombreBoton}}
+</button>

@@ -9,19 +9,11 @@ module.exports = {
 
   attributes: {
 
-    attributes: {
-      nombre:{
-        type: 'string',
-        required: true,
-      }
+    nombre:{
+      type: 'string',
+      required: true, // Por defecto es false
     },
-    // Relaciones
-    // Batalla <- Pokemon
-    pokemon: {
-      model: 'Pokemon',
-      required: true,
-    }
+
   },
 
 };
-

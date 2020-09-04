@@ -8,25 +8,17 @@
 module.exports = {
 
   attributes: {
-
-    attributes: {
-      nombre:{
-        type: 'string',
-        required: true,
-      },
-      // RELACIONES
-      // Pokemon <- Usuario - Muchos a uno
-      owner: { // Nombre FK
-        model: 'Usuario', // Modelo con el cual relacionamos
-        required: true, // Requerida 1 -N ---- //false // Opcional 0 - N (por defecto)
-      }
+    nombre:{
+      type: 'string',
+      required: true, // Por defecto es false
     },
-    // Pokemon -> Batalla
-    batallas: {
-      collection: 'Batalla',
-      via: 'pokemon'
+    // Relaciones
+    // Pokemon <- Usuario - Muchos a Uno
+    usuario: { // Nombre FK
+      model: 'Usuario', // Modelo con el cual relacionamos
+      required: true, // Requerida 1 - N
+      //false // Opcional  0 - N (por defecto)
     }
   },
 
 };
-

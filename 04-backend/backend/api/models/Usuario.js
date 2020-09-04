@@ -6,10 +6,9 @@
  */
 
 module.exports = {
-  datastore: 'default',
-  tableName: 'epn_usuario',
+  datastore: 'default', // nombre conexión
+  tableName: 'epn_usuario', // nombre tabla
   attributes: {
-
     cedula:{ // nombre atributo
       type: 'string',
       required: true, // Por defecto es false
@@ -29,16 +28,15 @@ module.exports = {
     },
     estadoCivil:{
       type: 'string',
-      isIn: ['Soltero', 'Casado', 'Divorciado', 'Viudo', 'Unión libre'],
+      isIn: ['Soltero', 'Casado', 'Divorciado', 'Viudo', 'Unión libre'], // Solo estos valores
       defaultsTo: 'Soltero' // Valor por defecto
     },
     // RELACIONES
     // Usuario -> Pokemon
-    pokemones: { // Uno a muchos
+    pokemones: { // Uno a muchos (nombre en plural)
       collection: 'Pokemon', // Modelo a relacionarse
-      via: 'usuario' //Nombre atributo FK en el modelo relacionado
+      via: 'usuario' // Nombre atributo FK en el modelo relacionada
     }
   },
 
 };
-
