@@ -1,34 +1,105 @@
 
-<h1>Lista de películas</h1>
-
+<!--<h1>Lista de peliculas</h1>-->
+<!--&lt;!&ndash; Directivas - NGFOR  &ndash;&gt;-->
 <!--<p *ngFor="let numero of arregloNumeros">-->
 <!--  {{numero}}-->
 <!--</p>-->
-
+<!--&lt;!&ndash; Directivas - NGIF  &ndash;&gt;-->
 <!--<p *ngIf="false">-->
 <!--  OCULTO-->
 <!--</p>-->
 
-<div *ngFor="let pelicula of arregloPeliculas">
-  <app-carta-pelicula
-    [urlImagen]="pelicula.url"
-    [descripcion]="pelicula.desc"
-    [nombreBoton]="pelicula.nombrePeli"
-    (eventoDioClicEnBoton)="mensajeConsola($event)"
-    (eventoDioClicEnImagen)="mensajeConsola($event)"
-  >
-  </app-carta-pelicula>
+<!--<div *ngFor="let pelicula of arregloPeliculas">-->
 
-  <br>
-  <br>
+<!--  <app-carta-pelicula-->
+<!--    [urlImagen]="pelicula.url"-->
+<!--    [descripcion]="pelicula.descripcion"-->
+<!--    [nombreBoton]="pelicula.nombrePelicula"-->
+<!--    (eventoDioClicEnBoton)="mensajeConsola($event)"-->
+<!--    (eventoDioClicEnImagen)="mensajeConsola($event)"-->
+<!--  >-->
+<!--  </app-carta-pelicula>-->
 
+<!--</div>-->
+
+<!--<button (click)="crearUsuario()">-->
+<!--  Crear Usuario-->
+<!--</button>-->
+
+<!--<button (click)="habilitado = !habilitado">-->
+<!--  {{habilitado ? 'Habilitado' : 'Deshabilitado'}}-->
+<!--</button>-->
+
+<!--<app-carta-pelicula *ngIf="habilitado">-->
+
+<!--</app-carta-pelicula>-->
+
+
+<div *ngFor="let usuario of arregloUsuarios">
+  {{usuario.nombre}}
 </div>
 
+<ul>
+  <li>
+    <a [routerLink]="['inicio']">
+      Ir Inicio
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['login']">
+      Ir Login
+    </a>
+  </li>
+</ul>
 
+<router-outlet>
+
+</router-outlet>
+
+<!--<br>-->
 
 <!--<app-carta-pelicula-->
-<!--  urlImagen="https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_3adaf4f8.jpeg?region=0,0,540,810"-->
-<!--  descripcion="Avengers: Endgame"-->
+<!--  urlImagen="https://los40es00.epimg.net/los40/imagenes/2020/08/04/cinetv/1596531662_429948_1596533048_noticia_normal.jpg"-->
+<!--  descripcion="Descripcion 2"-->
 <!--  nombreBoton="Like 2"-->
 <!--&gt;-->
 <!--</app-carta-pelicula>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<h1>Titulo 1</h1>-->
+<!--<h6>Titulo 6</h6>-->
+<!--<p>Parrafo</p>-->
+<!--<ul>-->
+<!--  <li>Papa</li>-->
+<!--  <li>Cebolla</li>-->
+<!--</ul>-->
+<!--<ol>-->
+<!--  <li>A</li>-->
+<!--  <li>B</li>-->
+<!--  <li>C</li>-->
+<!--</ol>-->
+<!--<img-->
+<!--  src="https://www.40defiebre.com/wp-content/uploads/2015/10/imagenes.png"-->
+<!--  alt=""-->
+<!--&gt;-->
+<!--&lt;!&ndash; anchor ancla &ndash;&gt;-->
+<!--<a href="https://www.google.com">-->
+<!--  IR A GOOGLE-->
+<!--</a>-->
+<!--<button>Mi primer boton</button>-->
