@@ -1,11 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-carta-pelicula',
   templateUrl: './carta-pelicula.component.html',
   styleUrls: ['./carta-pelicula.component.css']
 })
-export class CartaPeliculaComponent implements OnInit {
+export class CartaPeliculaComponent
+  implements OnInit, OnDestroy {
 
   @Input()
   urlImagen: string;
@@ -17,31 +18,46 @@ export class CartaPeliculaComponent implements OnInit {
   nombreBoton: string;
 
   @Output()
-  eventoDioClicEnBoton:EventEmitter<boolean> = new EventEmitter<boolean>();
+  eventoDioClicEnBoton: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   @Output()
-  eventoDioClicEnImagen:EventEmitter<boolean> = new EventEmitter<boolean>();
+  eventoDioClicEnImagen: EventEmitter<boolean> = new EventEmitter<boolean>()
 
-  textoEjemplo = 'Avengers';
-  urlEjemploImagen = 'https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_3adaf4f8.jpeg?region=0,0,540,810';
-  linkTextoEjemplo = 'https://www.google.com';
 
-  constructor() { }
+  urlEjemploImagen = 'https://i.ytimg.com/vi/gn1pz0rnNHs/hqdefault.jpg';
+
+  linkTextoEjemplo = 'https://www.google.com.ec';
+
+  textoEjemplo = 'Adrian';
+
+  constructor() {
+    console.log('Constructor');
+  }
 
   ngOnInit(): void {
+    console.log('INIT');
+    // Logica Inicial del componente
   }
 
-  ejemploFuncion(){
-    alert('Hola!');
+  ngOnDestroy(): void {
+    console.log('Destroy');
+    // Dessuscribimos de todos las suscripciones
   }
 
-  ejecutarEventoDioClic(){
+  ejemploFuncion() {
+    alert('HOLA!');
+  }
+
+  eventoOnBlur() {
+    console.log('Blur');
+  }
+
+  ejecutarEventoDioClic() {
     this.eventoDioClicEnBoton.emit(true);
   }
 
-  ejecutarEventoDIoClicImagen(){
+  ejecutarEventoDioClicImagen() {
     this.eventoDioClicEnImagen.emit(true);
   }
-
 
 }
