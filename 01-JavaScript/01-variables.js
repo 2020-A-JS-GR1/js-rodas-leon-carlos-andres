@@ -1,4 +1,4 @@
-// MUTABLES E INMUTABLES
+    // MUTABLES E INMUTABLES
     // Mutables
 
 var numeroUno = 1;
@@ -23,7 +23,7 @@ const texto = "Hola"; //String
 const booleano = false; // boolean
 const hijos = null; // object
 const zapatos = undefined; // undefined
-const apellido = 'Rodas';
+let apellido = 'Rodas';
 
 console.log(typeof numero);
 console.log(typeof sueldo);
