@@ -13,6 +13,8 @@ import { RutaUsuarioComponent } from './rutas/ruta-usuario/ruta-usuario.componen
 import { RutaListaUsuarioComponent } from './rutas/ruta-lista-usuario/ruta-lista-usuario.component';
 import { RutaCrearUsuarioComponentComponent } from './rutas/ruta-crear-usuario-component/ruta-crear-usuario-component.component';
 import { RutaEditarUsuarioComponentComponent } from './rutas/ruta-editar-usuario-component/ruta-editar-usuario-component.component';
+import { FormularioUsuarioComponent } from './componentes/formularios/formulario-usuario/formulario-usuario.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import { RutaEditarUsuarioComponentComponent } from './rutas/ruta-editar-usuario
     RutaListaUsuarioComponent,
     RutaCrearUsuarioComponentComponent,
     RutaEditarUsuarioComponentComponent,
+    FormularioUsuarioComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     UsuarioService,
