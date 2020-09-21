@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioService} from "../../servicios/usuario.service";
+import {UsuarioService} from "../../servicios/http/usuario.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,19 +10,35 @@ import {Router} from "@angular/router";
 export class RutaListaUsuarioComponent implements OnInit {
 
   arregloUsuarios = [];
+  busquedaModelo = '';
 
   constructor(
     private readonly _usuarioService: UsuarioService,
     private readonly _router: Router
   ) { }
 
-  irAEditarUsuario(id: Number) {
-    const ruta = ['/usuario', 'editar', id];
-    this._router.navigate(ruta);
+  ngOnInit(): void {
+    this.filtrarArreglo();
   }
 
-  ngOnInit(): void {
-    const observableTraerTodos = this._usuarioService.traerTodos();
+  filtrarArreglo(){
+    const consulta = {
+      or: [
+        {
+          nombre: {
+            contains: this.busquedaModelo
+          }
+        },
+        {
+          cedula: {
+            contains: this.busquedaModelo
+          }
+        },
+      ]
+    }
+    const consultaString = 'where' + JSON.stringify(consulta)
+
+    const observableTraerTodos = this._usuarioService.traerTodos( this.busquedaModelo != '' ? consultaString : '');
     observableTraerTodos
       .subscribe(
         (usuarios: any[])=> {
@@ -30,8 +46,14 @@ export class RutaListaUsuarioComponent implements OnInit {
         },
         (error) => {
           console.error('Error', error)
-    }
+        }
       )
+
+  }
+
+  irAEditarUsuario(id: Number) {
+    const ruta = ['/usuario', 'editar', id];
+    this._router.navigate(ruta);
   }
 
   eliminarUsuario(id: number){

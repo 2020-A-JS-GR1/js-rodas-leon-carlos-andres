@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioService} from "../../servicios/usuario.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {UsuarioService} from "../../servicios/http/usuario.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-editar-usuario-component',
@@ -9,10 +9,12 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class RutaEditarUsuarioComponentComponent implements OnInit {
   usuario;
+  mostrarFormulario = false;
 
   constructor( //  Inyectamos dependencias
     private readonly _usuarioService: UsuarioService,
-    private readonly _activatedRoute: ActivatedRoute
+    private readonly _activatedRoute: ActivatedRoute,
+    private readonly _router: Router,
   ) {
   }
 
@@ -29,6 +31,7 @@ export class RutaEditarUsuarioComponentComponent implements OnInit {
             .subscribe(
               (usuario: any) => {
                 this.usuario = usuario;
+                this.llenarFormularioConDatosDeUsuario();
               },
               (error) => {
                 console.error('Error', error);
@@ -36,6 +39,23 @@ export class RutaEditarUsuarioComponentComponent implements OnInit {
             )
         }
       )
+  }
+
+  llenarFormularioConDatosDeUsuario() {
+    this.mostrarFormulario = true;
+  }
+
+  editarUsuario(usuario){
+    const obsEditarUsuario = this._usuarioService.editar(usuario, this.usuario.id)
+    obsEditarUsuario.subscribe(
+      (datos)=>{
+        const url = ['/usuario', 'lista'];
+        this._router.navigate(url);
+      },
+      (error)=>{
+        console.error('Error', error)
+      }
+    )
   }
 
 }
