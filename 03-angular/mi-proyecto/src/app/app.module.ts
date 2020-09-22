@@ -15,6 +15,8 @@ import { RutaCrearUsuarioComponentComponent } from './rutas/ruta-crear-usuario-c
 import { RutaEditarUsuarioComponentComponent } from './rutas/ruta-editar-usuario-component/ruta-editar-usuario-component.component';
 import { FormularioUsuarioComponent } from './componentes/formularios/formulario-usuario/formulario-usuario.component';
 import {FormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import {FormsModule} from "@angular/forms";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [
     UsuarioService,
